@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
-from PIL import Image, ImageTk  # Import Pillow for handling images
+from PIL import Image, ImageTk  
 from tkinter import ttk
 import json
 import os
@@ -196,10 +196,10 @@ def get_save_file(mode):
 
 class CamoTracker:
     def __init__(self, root):
-        # Set color properties as instance variables
-        self.background_color = "#333333"        # Dark gray background color
-        self.text_color = "#ff5500"              # Orange text color
-        self.button_background_color = "#3e3e3e" # Lighter gray background for buttons
+       
+        self.background_color = "#333333"        
+        self.text_color = "#ff5500"              
+        self.button_background_color = "#3e3e3e" 
 
         self.title_image_path =  "images/blackops6logo.png"
         self.page_titles = {
@@ -281,33 +281,33 @@ class CamoTracker:
             self.checkbox_states = {}
 
     def main_menu(self):
-        # Set a fixed size for the main menu
+       
         window_width = max(self.title_photo.width(), 300)
-        window_height = self.title_photo.height() + 400  # Increased height to accommodate Quit button
+        window_height = self.title_photo.height() + 400  
         self.root.geometry(f"{window_width}x{window_height}")
         self.root.resizable(False, False)
 
-        # Clear previous widgets
+        
         for widget in self.root.winfo_children():
             widget.destroy()
         
-        # Display the main menu title image
+       
         title_label = tk.Label(self.root, image=self.title_photo, bg=self.background_color)
         title_label.image = self.title_photo
         title_label.pack(pady=20)
 
-        # Display mode buttons
+        
         for mode in ["Multiplayer", "Zombies", "Warzone"]:
             tk.Button(self.root, text=mode, width=self.button_width,
                     fg=self.text_color, bg=self.button_background_color, font=("Arial", 14),
                     command=lambda m=mode: self.show_weapon_classes(m)).pack(pady=10)
         
-        # Settings button
+       
         tk.Button(self.root, text="Settings", width=self.button_width,
                 fg=self.text_color, bg=self.button_background_color, font=("Arial", 14),
                 command=self.settings).pack(pady=10)
 
-        # Quit button
+        
         tk.Button(self.root, text="Quit", width=self.button_width,
                 fg=self.text_color, bg=self.button_background_color, font=("Arial", 14),
                 command=self.root.quit).pack(pady=10)
@@ -455,15 +455,15 @@ class CamoTracker:
         checkbox.pack(anchor="w", padx=5, pady=2)
 
     def settings(self):
-        # Clear the main window
+        
         for widget in self.root.winfo_children():
             widget.destroy()
 
-        # Display a title for the settings page
+        
         tk.Label(self.root, text="Settings", font=("Arial", 20),
                  fg=self.text_color, bg=self.background_color).pack(pady=20)
 
-        # Add a "Back" button to return to the main menu
+        
         tk.Button(self.root, text="Back", width=self.button_width,
                   fg=self.text_color, bg=self.button_background_color, font=("Arial", 14),
                   command=self.main_menu).pack(pady=10)
